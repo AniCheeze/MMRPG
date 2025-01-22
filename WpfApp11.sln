@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp11", "WpfApp11\WpfApp11.csproj", "{8D2330DB-8798-4C7B-9896-2BC4FB82296D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerMMRPG", "ServerMMRPG\ServerMMRPG.csproj", "{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8D2330DB-8798-4C7B-9896-2BC4FB82296D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D2330DB-8798-4C7B-9896-2BC4FB82296D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D2330DB-8798-4C7B-9896-2BC4FB82296D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
