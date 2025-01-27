@@ -10,14 +10,20 @@
         <Menu Height="25" VerticalAlignment="Top" FontSize="16">
             <MenuItem Header="Locations">
                 <MenuItem Header="Forest" ></MenuItem>
+                <MenuItem Header="Swamp" ></MenuItem>
+                <MenuItem Header="Mountain" ></MenuItem>
+                <MenuItem Header="Caves" ></MenuItem>
                 <MenuItem Header="Town" >
-                    <MenuItem Header="WinForms"></MenuItem>
-                    <MenuItem Header="WPF" ></MenuItem>
+                    <MenuItem Header="Smithery"></MenuItem>
+                    <MenuItem Header="Magic Tower" ></MenuItem>
+                    <MenuItem Header="Guild" ></MenuItem>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="Exit" ></MenuItem>
             </MenuItem>
-            <MenuItem Header="Equipment" ></MenuItem>
+            <MenuItem Header="Equipment" >
+                <MenuItem Header="Inventory" ></MenuItem>
+                <MenuItem Header="Sets" ></MenuItem>
+            </MenuItem>
             <MenuItem Header="Settings" ></MenuItem>
         </Menu>
 
