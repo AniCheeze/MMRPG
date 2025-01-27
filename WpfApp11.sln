@@ -5,11 +5,11 @@ VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp11", "WpfApp11\WpfApp11.csproj", "{8D2330DB-8798-4C7B-9896-2BC4FB82296D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerMMRPG", "ServerMMRPG\ServerMMRPG.csproj", "{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainClasses", "MainClasses\MainClasses.csproj", "{1C15A84A-D8CA-441B-955F-B2073C4E8D7B}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MMRPGDB", "MMRPGDB\MMRPGDB.sqlproj", "{DBD6C213-B160-4326-8BA7-0505EC0CE368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3", "ConsoleApp3\ConsoleApp3.csproj", "{D9213DAC-00AB-4C82-94CE-E1BFEF74464A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{8D2330DB-8798-4C7B-9896-2BC4FB82296D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D2330DB-8798-4C7B-9896-2BC4FB82296D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D2330DB-8798-4C7B-9896-2BC4FB82296D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45F659F9-8E6B-4A74-AC7B-A48EA47407B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C15A84A-D8CA-441B-955F-B2073C4E8D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C15A84A-D8CA-441B-955F-B2073C4E8D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C15A84A-D8CA-441B-955F-B2073C4E8D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +31,10 @@ Global
 		{DBD6C213-B160-4326-8BA7-0505EC0CE368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBD6C213-B160-4326-8BA7-0505EC0CE368}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DBD6C213-B160-4326-8BA7-0505EC0CE368}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D9213DAC-00AB-4C82-94CE-E1BFEF74464A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9213DAC-00AB-4C82-94CE-E1BFEF74464A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9213DAC-00AB-4C82-94CE-E1BFEF74464A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9213DAC-00AB-4C82-94CE-E1BFEF74464A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

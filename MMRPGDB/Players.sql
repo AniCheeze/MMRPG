@@ -1,6 +1,8 @@
 ﻿CREATE TABLE [dbo].[Players]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
-    [Name] NVARCHAR(MAX) NULL, 
-    [Password] NVARCHAR(MAX) NULL
+    [Name] NVARCHAR(MAX) NOT NULL, 
+    [ATK] INT NOT NULL, 
+    [DEF] INT NOT NULL, 
+    [HP] INT NOT NULL
 )

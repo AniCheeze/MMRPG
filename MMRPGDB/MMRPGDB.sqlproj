@@ -59,5 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Players.sql" />
+    <Build Include="SaveData.sql" />
   </ItemGroup>
 </Project>
