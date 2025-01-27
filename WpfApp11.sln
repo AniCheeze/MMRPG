@@ -11,6 +11,11 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MMRPGDB", "MMRPGDB\MMRPGDB.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3", "ConsoleApp3\ConsoleApp3.csproj", "{D9213DAC-00AB-4C82-94CE-E1BFEF74464A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{5F2CE0CA-60FC-42C5-831E-1767A12D6A2B}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\MainIcon.png = Resources\MainIcon.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
