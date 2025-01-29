@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsoleApp3
+namespace WpfApp1
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class SaveData
+    public partial class Player
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string NameLog { get; set; }
         public string Password { get; set; }
-        public int IdSvaeData { get; set; }
+        public Nullable<int> IdSaveData { get; set; }
     
-        public virtual Players Players { get; set; }
+        public virtual DataSave DataSave { get; set; }
     }
 }

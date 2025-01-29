@@ -7,26 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsoleApp3
+namespace WpfApp1
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Players
+    public partial class DataSave
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Players()
+        public DataSave()
         {
-            this.SaveData = new HashSet<SaveData>();
+            this.Player = new HashSet<Player>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public int HP { get; set; }
         public int ATK { get; set; }
         public int DEF { get; set; }
-        public int HP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SaveData> SaveData { get; set; }
+        public virtual ICollection<Player> Player { get; set; }
     }
 }

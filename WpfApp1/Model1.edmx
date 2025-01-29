@@ -4,90 +4,90 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище RPGMMODBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Players">
+      <Schema Namespace="Хранилище Database1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DataSave">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HP" Type="int" Nullable="false" />
           <Property Name="ATK" Type="int" Nullable="false" />
           <Property Name="DEF" Type="int" Nullable="false" />
-          <Property Name="HP" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="SaveData">
+        <EntityType Name="Player">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NameLog" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="IdSvaeData" Type="int" Nullable="false" />
+          <Property Name="IdSaveData" Type="int" />
         </EntityType>
-        <Association Name="FK__SaveData__IdSvae__4BAC3F29">
-          <End Role="Players" Type="Self.Players" Multiplicity="1" />
-          <End Role="SaveData" Type="Self.SaveData" Multiplicity="*" />
+        <Association Name="FK__Player__IdSaveDa__4BAC3F29">
+          <End Role="DataSave" Type="Self.DataSave" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Players">
+            <Principal Role="DataSave">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SaveData">
-              <PropertyRef Name="IdSvaeData" />
+            <Dependent Role="Player">
+              <PropertyRef Name="IdSaveData" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище RPGMMODBModelContainer">
-          <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SaveData" EntityType="Self.SaveData" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__SaveData__IdSvae__4BAC3F29" Association="Self.FK__SaveData__IdSvae__4BAC3F29">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="SaveData" EntitySet="SaveData" />
+        <EntityContainer Name="Хранилище Database1ModelContainer">
+          <EntitySet Name="DataSave" EntityType="Self.DataSave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Player__IdSaveDa__4BAC3F29" Association="Self.FK__Player__IdSaveDa__4BAC3F29">
+            <End Role="DataSave" EntitySet="DataSave" />
+            <End Role="Player" EntitySet="Player" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="RPGMMODBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Players">
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DataSave">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HP" Type="Int32" Nullable="false" />
           <Property Name="ATK" Type="Int32" Nullable="false" />
           <Property Name="DEF" Type="Int32" Nullable="false" />
-          <Property Name="HP" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SaveData" Relationship="Self.FK__SaveData__IdSvae__4BAC3F29" FromRole="Players" ToRole="SaveData" />
+          <NavigationProperty Name="Player" Relationship="Self.FK__Player__IdSaveDa__4BAC3F29" FromRole="DataSave" ToRole="Player" />
         </EntityType>
-        <EntityType Name="SaveData">
+        <EntityType Name="Player">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameLog" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdSvaeData" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Players" Relationship="Self.FK__SaveData__IdSvae__4BAC3F29" FromRole="SaveData" ToRole="Players" />
+          <Property Name="IdSaveData" Type="Int32" />
+          <NavigationProperty Name="DataSave" Relationship="Self.FK__Player__IdSaveDa__4BAC3F29" FromRole="Player" ToRole="DataSave" />
         </EntityType>
-        <Association Name="FK__SaveData__IdSvae__4BAC3F29">
-          <End Role="Players" Type="Self.Players" Multiplicity="1" />
-          <End Role="SaveData" Type="Self.SaveData" Multiplicity="*" />
+        <Association Name="FK__Player__IdSaveDa__4BAC3F29">
+          <End Role="DataSave" Type="Self.DataSave" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Players">
+            <Principal Role="DataSave">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SaveData">
-              <PropertyRef Name="IdSvaeData" />
+            <Dependent Role="Player">
+              <PropertyRef Name="IdSaveData" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RPGMMODBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Players" EntityType="Self.Players" />
-          <EntitySet Name="SaveData" EntityType="Self.SaveData" />
-          <AssociationSet Name="FK__SaveData__IdSvae__4BAC3F29" Association="Self.FK__SaveData__IdSvae__4BAC3F29">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="SaveData" EntitySet="SaveData" />
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DataSave" EntityType="Self.DataSave" />
+          <EntitySet Name="Player" EntityType="Self.Player" />
+          <AssociationSet Name="FK__Player__IdSaveDa__4BAC3F29" Association="Self.FK__Player__IdSaveDa__4BAC3F29">
+            <End Role="DataSave" EntitySet="DataSave" />
+            <End Role="Player" EntitySet="Player" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -95,25 +95,25 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RPGMMODBModelContainer" CdmEntityContainer="RPGMMODBEntities">
-          <EntitySetMapping Name="Players">
-            <EntityTypeMapping TypeName="RPGMMODBModel.Players">
-              <MappingFragment StoreEntitySet="Players">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Database1ModelContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="DataSave">
+            <EntityTypeMapping TypeName="Database1Model.DataSave">
+              <MappingFragment StoreEntitySet="DataSave">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HP" ColumnName="HP" />
                 <ScalarProperty Name="ATK" ColumnName="ATK" />
                 <ScalarProperty Name="DEF" ColumnName="DEF" />
-                <ScalarProperty Name="HP" ColumnName="HP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SaveData">
-            <EntityTypeMapping TypeName="RPGMMODBModel.SaveData">
-              <MappingFragment StoreEntitySet="SaveData">
+          <EntitySetMapping Name="Player">
+            <EntityTypeMapping TypeName="Database1Model.Player">
+              <MappingFragment StoreEntitySet="Player">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameLog" ColumnName="NameLog" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IdSvaeData" ColumnName="IdSvaeData" />
+                <ScalarProperty Name="IdSaveData" ColumnName="IdSaveData" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

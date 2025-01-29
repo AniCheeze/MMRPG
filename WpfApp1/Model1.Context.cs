@@ -13,10 +13,10 @@ namespace WpfApp1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RPGMMODBEntities : DbContext
+    public partial class Database1Entities : DbContext
     {
-        public RPGMMODBEntities()
-            : base("name=RPGMMODBEntities")
+        public Database1Entities()
+            : base("name=Database1Entities")
         {
         }
     
@@ -25,7 +25,7 @@ namespace WpfApp1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Players> Players { get; set; }
-        public virtual DbSet<SaveData> SaveData { get; set; }
+        public virtual DbSet<DataSave> DataSave { get; set; }
+        public virtual DbSet<Player> Player { get; set; }
     }
 }
