@@ -13,10 +13,10 @@ namespace ConsoleApp3
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LibraryEntities : DbContext
+    public partial class RPGMMODBEntities1 : DbContext
     {
-        public LibraryEntities()
-            : base("name=LibraryEntities")
+        public RPGMMODBEntities1()
+            : base("name=RPGMMODBEntities1")
         {
         }
     

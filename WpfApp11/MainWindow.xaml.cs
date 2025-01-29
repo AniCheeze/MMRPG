@@ -9,7 +9,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace WpfApp11
 {
     /// <summary>
@@ -26,26 +25,12 @@ namespace WpfApp11
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                using(LibraryEntities bd)
-            }
-            catch 
-            {
 
-            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            try
-            {
 
-            }
-            catch
-            {
-
-            }
         }
     }
 }
