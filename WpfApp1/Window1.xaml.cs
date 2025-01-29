@@ -32,25 +32,58 @@ namespace WpfApp11
         {
             DispatcherTimer timeL = new DispatcherTimer();
             DispatcherTimer timerV = new DispatcherTimer();
+            DispatcherTimer TTick = new DispatcherTimer();
             timeL.Tick += TimerTickFail;
             timerV.Tick += TimerTickSuccess;
             Random R1 = new Random();
             Random R2 = new Random();
-            int TT1 = R1.Next(10);
-            int TT2 = R2.Next(10);
+            int TT1 = R1.Next(3,10);
+            int TT2 = R2.Next(5,10);
             timeL.Interval = TimeSpan.FromSeconds(TT1);
             timerV.Interval = TimeSpan.FromSeconds(TT2);
-            timeL.Start();
-            timerV.Start();
+            TTick.Interval = TimeSpan.FromSeconds(0);
+            if (TT1 > TT2)
+            {
+                timeL.Start();
+            }
+            else if (TT2 > TT1)
+            {
+                timerV.Start();
+            }
+            else
+            {
+                timerV.Start();
+            }
+            if(PG1.Value < TT2)
+            {
+                TTick.Start();
+            }
+            PG1.Maximum = TT2;
+            PG1.Minimum = 0;
+            PG1.Value = 0;
+            PG1.Visibility = Visibility.Visible;
+        }
+
+        public void PRGBAR()
+        {
+            while (PG1.Value < PG1.Maximum)
+            {
+                PG1.Value += 1;
+            }
         }
 
         private void TimerTickFail(object sender, EventArgs e)
         {
-            
+            MessageBox.Show("Battle");
         }
         private void TimerTickSuccess(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Success");
+            PG1.Visibility = Visibility.Hidden;
+        }
+        private void TTTICK(object sender, EventArgs e)
+        {
+           PRGBAR();
         }
 
         public void FClickTV(object sender, RoutedEventArgs e)

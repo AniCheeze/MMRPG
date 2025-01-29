@@ -26,6 +26,7 @@
             </MenuItem>
             <MenuItem Header="Settings" ></MenuItem>
         </Menu>
+        <ProgressBar x:Name="PG1" HorizontalAlignment="Center" Height="50" Margin="0,346,0,0" VerticalAlignment="Top" Width="670" Visibility="Hidden"/>
 
     </Grid>
 </Window>
