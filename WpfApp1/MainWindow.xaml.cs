@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
+
 
 namespace WpfApp1
 {
@@ -29,9 +31,18 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using (RPGMMODBEntities db = new RPGMMODBEntities())
+            using (Database1Entities2 db = new Database1Entities2())
             {
-               
+                var log = db.Player.FirstOrDefault(p => p.NameLog == UserName.Text);
+                var pas = db.Player.FirstOrDefault(p => p.Password == Password.Text);
+                if (log != null && pas != null)
+                {
+                    MessageBox.Show("Вход на сервер ", "Успех", MessageBoxButton.OK, MessageBoxImage.None);
+                }
+                else
+                {
+                    MessageBox.Show("Такого логина или пароля нет ", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

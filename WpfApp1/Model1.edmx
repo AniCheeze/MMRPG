@@ -82,7 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Database1Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DataSave" EntityType="Self.DataSave" />
           <EntitySet Name="Player" EntityType="Self.Player" />
           <AssociationSet Name="FK__Player__IdSaveDa__4BAC3F29" Association="Self.FK__Player__IdSaveDa__4BAC3F29">
@@ -95,7 +95,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Database1ModelContainer" CdmEntityContainer="Database1Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Database1ModelContainer" CdmEntityContainer="Database1Entities2">
           <EntitySetMapping Name="DataSave">
             <EntityTypeMapping TypeName="Database1Model.DataSave">
               <MappingFragment StoreEntitySet="DataSave">
