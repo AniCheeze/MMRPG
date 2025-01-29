@@ -9,14 +9,14 @@
     <Grid>
         <Menu Height="25" VerticalAlignment="Top" FontSize="16">
             <MenuItem Header="Locations">
-                <MenuItem Header="Forest" ></MenuItem>
-                <MenuItem Header="Swamp" ></MenuItem>
-                <MenuItem Header="Mountain" ></MenuItem>
-                <MenuItem Header="Caves" ></MenuItem>
-                <MenuItem Header="Town" >
-                    <MenuItem Header="Smithery"></MenuItem>
-                    <MenuItem Header="Magic Tower" ></MenuItem>
-                    <MenuItem Header="Guild" ></MenuItem>
+                <MenuItem Header="Forest" Click="FClickTV" ></MenuItem>
+                <MenuItem Header="Swamp" Click="SClickTV" ></MenuItem>
+                <MenuItem Header="Mountain" Click="MClickTV" ></MenuItem>
+                <MenuItem Header="Caves" Click="CClickTV" ></MenuItem>
+                <MenuItem Header="Town" Click="TClickTV" >
+                    <MenuItem Header="Smithery" Click="SSClickTV"></MenuItem>
+                    <MenuItem Header="Magic Tower" Click="MMClickTV"></MenuItem>
+                    <MenuItem Header="Guild" Click="GGClickTV"></MenuItem>
                 </MenuItem>
                 <Separator />
             </MenuItem>
