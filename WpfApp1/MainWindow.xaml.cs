@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,11 +30,11 @@ namespace WpfApp1
             Background = gradientBrush;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            using (Database1Entities2 db = new Database1Entities2())
+            using (MMORPGBDEntities1 db = new MMORPGBDEntities1())
             {
-                var log = db.Player.FirstOrDefault(p => p.NameLog == UserName.Text);
+                var log = db.Player.FirstOrDefault(p => p.Login == UserName.Text);
                 var pas = db.Player.FirstOrDefault(p => p.Password == Password.Text);
                 if (log != null && pas != null)
                 {
@@ -48,7 +49,24 @@ namespace WpfApp1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            using (MMORPGBDEntities1 db = new MMORPGBDEntities1())
+            {
+                var log = db.Player.FirstOrDefault(p => p.Login == UserName.Text);
+                var pas = db.Player.FirstOrDefault(p => p.Password == Password.Text);
+                if (log == null && pas == null)
+                {
+                    Player player = new Player();
+                    player.Login = UserName.Text;
+                    player.Password = Password.Text;
+                    db.Player.Add(player);
+                    db.SaveChanges();
+                    MessageBox.Show("Вы успешно зарегистрировались", "Гойда!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Такой логин уже есть", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }

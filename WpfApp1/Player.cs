@@ -15,10 +15,10 @@ namespace WpfApp1
     public partial class Player
     {
         public int Id { get; set; }
-        public string NameLog { get; set; }
+        public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<int> IdSaveData { get; set; }
     
-        public virtual DataSave DataSave { get; set; }
+        public virtual SaveData SaveData { get; set; }
     }
 }

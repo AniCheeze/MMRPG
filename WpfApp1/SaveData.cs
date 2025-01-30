@@ -12,10 +12,10 @@ namespace WpfApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class DataSave
+    public partial class SaveData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DataSave()
+        public SaveData()
         {
             this.Player = new HashSet<Player>();
         }
