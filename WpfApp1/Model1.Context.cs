@@ -13,10 +13,10 @@ namespace WpfApp1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MMORPGBDEntities1 : DbContext
+    public partial class MMORPGBDEntities3 : DbContext
     {
-        public MMORPGBDEntities1()
-            : base("name=MMORPGBDEntities1")
+        public MMORPGBDEntities3()
+            : base("name=MMORPGBDEntities3")
         {
         }
     

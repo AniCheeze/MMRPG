@@ -32,7 +32,7 @@ namespace WpfApp1
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            using (MMORPGBDEntities1 db = new MMORPGBDEntities1())
+            using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
             {
                 var log = db.Player.FirstOrDefault(p => p.Login == UserName.Text);
                 var pas = db.Player.FirstOrDefault(p => p.Password == Password.Text);
@@ -49,15 +49,24 @@ namespace WpfApp1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            using (MMORPGBDEntities1 db = new MMORPGBDEntities1())
+            using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
             {
                 var log = db.Player.FirstOrDefault(p => p.Login == UserName.Text);
                 var pas = db.Player.FirstOrDefault(p => p.Password == Password.Text);
                 if (log == null && pas == null)
                 {
                     Player player = new Player();
+                    SaveData saveData = new SaveData();
+                    saveData.Name = UserName.Text;
+                    saveData.HP = 100;
+                    saveData.ATK = 10;
+                    saveData.DEF = 5;
+                    db.SaveData.Add(saveData);
+                    db.SaveChanges();
+                    MessageBox.Show(saveData.Id.ToString());
                     player.Login = UserName.Text;
                     player.Password = Password.Text;
+                    player.IdSaveData = saveData.Id;
                     db.Player.Add(player);
                     db.SaveChanges();
                     MessageBox.Show("Вы успешно зарегистрировались", "Гойда!", MessageBoxButton.OK, MessageBoxImage.Information);

@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2eb4116db70f4b12865f3943da396a10" Name="Diagram1">
+      <Diagram DiagramId="5d52bd53260947d28abe85c02fbec943" Name="Diagram1">
         <EntityTypeShape EntityType="MMORPGBDModel.Player" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MMORPGBDModel.SaveData" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="MMORPGBDModel.FK__Player__IdSaveDa__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="MMORPGBDModel.FK__Player__IdSaveDa__52593CB8" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
