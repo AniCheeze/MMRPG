@@ -6,25 +6,34 @@
         xmlns:local="clr-namespace:WpfApp11"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
+    <Window.Resources>
+        <BitmapImage x:Key="FRST" UriSource="Forest.jpg"/>
+        <BitmapImage x:Key="SWMP" UriSource="Swamp.jpg"/>
+        <BitmapImage x:Key="MNTN" UriSource="Mountain.jpg"/>
+        <BitmapImage x:Key="CVMN" UriSource="Cave.jpg"/>
+        <BitmapImage x:Key="TWNN" UriSource="Town.jpg"/>
+    </Window.Resources>
     <Grid>
-        <Menu Height="25" VerticalAlignment="Top" FontSize="16">
+        <Image x:Name="IMGPM" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="400" Margin="22,96,0,0" Stretch="Fill"/>
+
+        <Menu Height="25" VerticalAlignment="Top" FontSize="16" Opacity="0.85">
             <MenuItem Header="Locations">
-                <MenuItem Header="Forest" Click="FClickTV" ></MenuItem>
-                <MenuItem Header="Swamp" Click="SClickTV" ></MenuItem>
-                <MenuItem Header="Mountain" Click="MClickTV" ></MenuItem>
-                <MenuItem Header="Caves" Click="CClickTV" ></MenuItem>
+                <MenuItem Header="Forest" Click="FClickTV" />
+                <MenuItem Header="Swamp" Click="SClickTV" />
+                <MenuItem Header="Mountain" Click="MClickTV" />
+                <MenuItem Header="Caves" Click="CClickTV" />
                 <MenuItem Header="Town" Click="TClickTV" >
-                    <MenuItem Header="Smithery" Click="SSClickTV"></MenuItem>
-                    <MenuItem Header="Magic Tower" Click="MMClickTV"></MenuItem>
-                    <MenuItem Header="Guild" Click="GGClickTV"></MenuItem>
+                    <MenuItem Header="Smithery" Click="SSClickTV"/>
+                    <MenuItem Header="Magic Tower" Click="MMClickTV"/>
+                    <MenuItem Header="Guild" Click="GGClickTV"/>
                 </MenuItem>
                 <Separator />
             </MenuItem>
             <MenuItem Header="Equipment" >
-                <MenuItem Header="Inventory" ></MenuItem>
-                <MenuItem Header="Sets" ></MenuItem>
+                <MenuItem Header="Inventory" />
+                <MenuItem Header="Sets" />
             </MenuItem>
-            <MenuItem Header="Settings" ></MenuItem>
+            <MenuItem Header="Settings" />
         </Menu>
         <ProgressBar x:Name="PG1" HorizontalAlignment="Center" Height="50" Margin="0,346,0,0" VerticalAlignment="Top" Width="670" Visibility="Hidden"/>
 

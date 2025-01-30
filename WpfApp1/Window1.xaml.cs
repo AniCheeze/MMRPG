@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using MainClasses;
+
 
 namespace WpfApp11
 {
@@ -21,7 +23,8 @@ namespace WpfApp11
     /// </summary>
     public partial class Window1 : Window
     {
-        
+        Player MainPlayer;
+        Enemy MainEnemy;
         public Window1()
         {
             InitializeComponent();
@@ -88,39 +91,93 @@ namespace WpfApp11
 
         public void FClickTV(object sender, RoutedEventArgs e)
         {
-            
-        }
+            Travel();
+            IMGPM.Source = (ImageSource)FindResource("FRST");
+        }   
 
         public void SClickTV(object sender, RoutedEventArgs e)
         {
-
+            Travel();
+            IMGPM.Source = (ImageSource)FindResource("SWMP");
         }
 
         public void MClickTV(object sender, RoutedEventArgs e)
         {
-
+            Travel();
+            IMGPM.Source = (ImageSource)FindResource("MNTN");
         }
 
         public void CClickTV(object sender, RoutedEventArgs e)
         {
-
+            Travel();
+            IMGPM.Source = (ImageSource)FindResource("CVMN");
         }
 
         public void TClickTV(object sender, RoutedEventArgs e)
         {
-
+            Travel();
+            IMGPM.Source = (ImageSource)FindResource("TWNN");
         }
         public void SSClickTV(object sender, RoutedEventArgs e)
         {
-
+            Travel();
+            IMGPM.Source = (ImageSource)FindResource("SWMP");
         }
         public void MMClickTV(object sender, RoutedEventArgs e)
         {
-
+            Travel();
+            IMGPM.Source = (ImageSource)FindResource("SWMP");
         }
         public void GGClickTV(object sender, RoutedEventArgs e)
         {
+            Travel();
+            IMGPM.Source = (ImageSource)FindResource("SWMP");
+        }
 
+        public void Battle(Enemy A, Player B)
+        {
+            DispatcherTimer PlayerASPD = new DispatcherTimer();
+            DispatcherTimer EnemyASPD = new DispatcherTimer();
+            int PSD = (5 - (B.SPD / 100 * 10) + (B.DEF / 100 * 5));
+            int ESD = (5 - (A.SPD / 100 * 10) + (A.DEF / 100 * 5));
+            PlayerASPD.Interval = TimeSpan.FromSeconds(PSD);
+            EnemyASPD.Interval = TimeSpan.FromSeconds(ESD);
+            PlayerASPD.Tick += PATK;
+            EnemyASPD.Tick += EATK;
+            PlayerASPD.Start();
+            EnemyASPD.Start();
+        }
+        public void PATK(object sender, EventArgs e)
+        {
+            MainEnemy.HP -= (MainPlayer.ATK - MainEnemy.DEF);
+            if(MainEnemy.HP > 0 && MainPlayer.HP > 0)
+            {
+                Battle(MainEnemy, MainPlayer);
+            }
+            else if(MainEnemy.HP > 0 && MainPlayer.HP <= 0)
+            {
+                MessageBox.Show("Mob Won");
+            }
+            else
+            {
+                MessageBox.Show("Player Won");
+            }
+        }
+        public void EATK(object sender, EventArgs e)
+        {
+            MainPlayer.HP -= (MainEnemy.ATK - MainPlayer.DEF);
+            if (MainEnemy.HP > 0 && MainPlayer.HP > 0)
+            {
+                Battle(MainEnemy, MainPlayer);
+            }
+            else if (MainEnemy.HP > 0 && MainPlayer.HP <= 0)
+            {
+                MessageBox.Show("Mob Won");
+            }
+            else
+            {
+                MessageBox.Show("Player Won");
+            }
         }
     }
 }

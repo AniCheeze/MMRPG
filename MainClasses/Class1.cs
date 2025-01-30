@@ -12,6 +12,7 @@ namespace MainClasses
         int HP { get; set; }
         int ATK { get; set; }
         int DEF {  get; set; }
+        int SPD { get; set; }
     }
     public interface Player
     {
@@ -19,6 +20,7 @@ namespace MainClasses
         int HP { get; set; }
         int ATK { get; set; }
         int DEF { get; set; }
+        int SPD { get; set; }
         Dictionary<string,double> keyValuePairs { get; set; }
 
     }
