@@ -15,8 +15,7 @@
     </Window.Resources>
     <Grid>
         <Image x:Name="IMGPM" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="400" Margin="22,96,0,0" Stretch="Fill"/>
-
-        <Menu Height="25" VerticalAlignment="Top" FontSize="16" Opacity="0.85">
+        <Menu x:Name="MenuNSTG" Height="25" VerticalAlignment="Top" FontSize="16" Opacity="0.85">
             <MenuItem Header="Locations">
                 <MenuItem Header="Forest" Click="FClickTV" />
                 <MenuItem Header="Swamp" Click="SClickTV" />
@@ -36,6 +35,7 @@
             <MenuItem Header="Settings" />
         </Menu>
         <ProgressBar x:Name="PG1" HorizontalAlignment="Center" Height="50" Margin="0,346,0,0" VerticalAlignment="Top" Width="670" Visibility="Hidden"/>
+        <Button Content="Stats" HorizontalAlignment="Left" Margin="22,396,0,0" VerticalAlignment="Top" Height="28" Width="125" FontSize="18" Click="Button_Click"/>
 
     </Grid>
 </Window>

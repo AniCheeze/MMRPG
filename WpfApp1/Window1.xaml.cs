@@ -78,6 +78,7 @@ namespace WpfApp11
         private void TimerTickFail(object sender, EventArgs e)
         {
             MessageBox.Show("Battle");
+            Battle(MainEnemy, MainPlayer);
         }
         private void TimerTickSuccess(object sender, EventArgs e)
         {
@@ -136,6 +137,7 @@ namespace WpfApp11
 
         public void Battle(Enemy A, Player B)
         {
+            MenuNSTG.IsEnabled = false;
             DispatcherTimer PlayerASPD = new DispatcherTimer();
             DispatcherTimer EnemyASPD = new DispatcherTimer();
             int PSD = (5 - (B.SPD / 100 * 10) + (B.DEF / 100 * 5));
@@ -157,10 +159,12 @@ namespace WpfApp11
             else if(MainEnemy.HP > 0 && MainPlayer.HP <= 0)
             {
                 MessageBox.Show("Mob Won");
+                MenuNSTG.IsEnabled = true;
             }
             else
             {
                 MessageBox.Show("Player Won");
+                MenuNSTG.IsEnabled = true;
             }
         }
         public void EATK(object sender, EventArgs e)
@@ -178,6 +182,11 @@ namespace WpfApp11
             {
                 MessageBox.Show("Player Won");
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"HP:{MainPlayer.HP}\nATK:{MainPlayer.ATK}\nDEF:{MainPlayer.DEF}\nSPD:{MainPlayer.SPD}", "Stats", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
