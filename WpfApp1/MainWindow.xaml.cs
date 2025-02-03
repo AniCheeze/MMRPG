@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using WpfApp11;
 
 
 namespace WpfApp1
@@ -39,6 +40,9 @@ namespace WpfApp1
                 if (log != null && pas != null)
                 {
                     MessageBox.Show("Вход на сервер ", "Успех", MessageBoxButton.OK, MessageBoxImage.None);
+                    Window1 window1 = new Window1();
+                    window1.Show();
+                    
                 }
                 else
                 {
@@ -70,6 +74,8 @@ namespace WpfApp1
                     db.Player.Add(player);
                     db.SaveChanges();
                     MessageBox.Show("Вы успешно зарегистрировались", "Гойда!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Window1 window1 = new Window1();
+                    window1.Show();
                 }
                 else
                 {
