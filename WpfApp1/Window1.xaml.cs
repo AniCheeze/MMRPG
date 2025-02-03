@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -57,10 +58,7 @@ namespace WpfApp11
             {
                 timerV.Start();
             }
-            if(PG1.Value < TT2)
-            {
                 TTick.Start();
-            }
             PG1.Maximum = TT2;
             PG1.Minimum = 0;
             PG1.Value = 0;
@@ -69,7 +67,7 @@ namespace WpfApp11
 
         public void PRGBAR()
         {
-            while (PG1.Value < PG1.Maximum)
+            if (PG1.Value < PG1.Maximum)
             {
                 PG1.Value += 1;
             }

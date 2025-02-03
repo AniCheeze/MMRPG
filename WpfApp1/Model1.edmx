@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="Stat" Type="int" Nullable="false" />
         </EntityType>
@@ -33,7 +33,7 @@
           <Property Name="DEF" Type="int" Nullable="false" />
           <Property Name="IdInventory" Type="int" />
         </EntityType>
-        <Association Name="FK__Player__IdSaveDa__52593CB8">
+        <Association Name="FK__Player__IdSaveDa__4D94879B">
           <End Role="SaveData" Type="Self.SaveData" Multiplicity="0..1" />
           <End Role="Player" Type="Self.Player" Multiplicity="*" />
           <ReferentialConstraint>
@@ -45,7 +45,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaveData__IdInve__5CD6CB2B">
+        <Association Name="FK__SaveData__IdInve__4E88ABD4">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
           <End Role="SaveData" Type="Self.SaveData" Multiplicity="*" />
           <ReferentialConstraint>
@@ -61,11 +61,11 @@
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaveData" EntityType="Self.SaveData" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Player__IdSaveDa__52593CB8" Association="Self.FK__Player__IdSaveDa__52593CB8">
+          <AssociationSet Name="FK__Player__IdSaveDa__4D94879B" Association="Self.FK__Player__IdSaveDa__4D94879B">
             <End Role="SaveData" EntitySet="SaveData" />
             <End Role="Player" EntitySet="Player" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaveData__IdInve__5CD6CB2B" Association="Self.FK__SaveData__IdInve__5CD6CB2B">
+          <AssociationSet Name="FK__SaveData__IdInve__4E88ABD4" Association="Self.FK__SaveData__IdInve__4E88ABD4">
             <End Role="Inventory" EntitySet="Inventory" />
             <End Role="SaveData" EntitySet="SaveData" />
           </AssociationSet>
