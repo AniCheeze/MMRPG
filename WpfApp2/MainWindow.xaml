@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="900">
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="413*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF6D5911" Offset="0.004"/>
+                <GradientStop Color="#FF9E7F29" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <ListBox Grid.Row="0" Grid.ColumnSpan="3"  Name ="listbox1" Height="384"  Width="780" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFCA941E" BorderBrush="#FF5B4209" Foreground="Black" Margin="60,40,60,40" Grid.RowSpan="2"/>
+        <Button Grid.Row="2" Grid.Column="2" Click="Button_Click1" x:Name="button1" Content="X" VerticalAlignment="Center" HorizontalAlignment="Left"   RenderTransformOrigin="0.5,0.5" Width="75" Height="20" Background="#FFC54B4B" Margin="375,0,0,0"/>
+        <Button Grid.Row="2" Grid.Column="0" Click="Button_Click" x:Name="button2" Content="V"  VerticalAlignment="Center" HorizontalAlignment="Left"   RenderTransformOrigin="0.5,0.5" Width="75" Height="20" Background="#FF7AF900"/>
+    </Grid>
+</Window>

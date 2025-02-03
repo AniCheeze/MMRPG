@@ -24,5 +24,11 @@ namespace MainClasses
         Dictionary<string,double> keyValuePairs { get; set; }
 
     }
+    public interface Items
+    {
+
+        string Name { get; set; }
+        int Status { get; set; }
+    }
 }
 
