@@ -12,23 +12,19 @@ namespace WpfApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class SaveData
+    public partial class Inventory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SaveData()
+        public Inventory()
         {
-            this.Player = new HashSet<Player>();
+            this.SaveData = new HashSet<SaveData>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public int HP { get; set; }
-        public int ATK { get; set; }
-        public int DEF { get; set; }
-        public Nullable<int> IdInventory { get; set; }
+        public int Stat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Player> Player { get; set; }
-        public virtual Inventory Inventory { get; set; }
+        public virtual ICollection<SaveData> SaveData { get; set; }
     }
 }
