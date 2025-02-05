@@ -24,11 +24,20 @@ namespace WpfApp11
     /// <summary>
     /// Логика взаимодействия для Window1.xaml
     /// </summary>
+    /// 
     public partial class Window1 : Window
     {
         public string NameGG {  get; set; }
+
         Players MainPlayer;
         Enemy MainEnemy;
+        public void LOADER()
+        {
+            using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
+            {
+                
+            }
+        }
         public Window1()
         {
             InitializeComponent();

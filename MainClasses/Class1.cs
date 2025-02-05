@@ -8,11 +8,11 @@ namespace MainClasses
 {
     public class Enemy
     {
-        string Name { get; set; }
-        int HP { get; set; }
-        int ATK { get; set; }
-        int DEF {  get; set; }
-        int SPD { get; set; }
+        public string Name { get; set; }
+        public int HP { get; set; }
+        public int ATK { get; set; }
+        public int DEF {  get; set; }
+        public int SPD { get; set; }
         Enemy(string name, int hP, int aTK, int dEF, int sPD)
         {
             Name = name;
@@ -24,11 +24,11 @@ namespace MainClasses
     }
     public class Players
     {
-        string Name { get; set; }
-        int HP { get; set; }
-        int ATK { get; set; }
-        int DEF { get; set; }
-        int SPD { get; set; }
+        public string Name { get; set; }
+        public int HP { get; set; }
+        public int ATK { get; set; }
+        public int DEF { get; set; }
+        public int SPD { get; set; }
         Dictionary<string,double> keyValuePairs { get; set; }
         Players(string name, int hP, int aTK, int dEF, int sPD)
         {
