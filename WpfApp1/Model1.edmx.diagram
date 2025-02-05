@@ -6,10 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="5d52bd53260947d28abe85c02fbec943" Name="Diagram1">
         <EntityTypeShape EntityType="MMORPGBDModel.Player" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MMORPGBDModel.SaveData" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="MMORPGBDModel.FK__Player__IdSaveDa__52593CB8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MMORPGBDModel.SaveData" PointX="0.875" PointY="1.75" Width="1.5" IsExpanded="true" />
+        <AssociationConnector ManuallyRouted="false" Association="MMORPGBDModel.FK__Player__IdSaveDa__52593CB8" />
         <EntityTypeShape EntityType="MMORPGBDModel.Inventory" Width="1.5" PointX="0.75" PointY="5.25" />
-        <AssociationConnector Association="MMORPGBDModel.FK__SaveData__IdInve__5CD6CB2B" />
+        <AssociationConnector Association="MMORPGBDModel.FK__Inventory__IdSav__01142BA1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

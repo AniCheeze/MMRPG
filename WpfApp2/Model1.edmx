@@ -13,7 +13,6 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="Stat" Type="int" Nullable="false" />
           <Property Name="IdSaveData" Type="int" />
-          <Property Name="IsArmor" Type="bit" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -75,6 +74,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MMORPGBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stat" Type="Int32" Nullable="false" />
+          <Property Name="IdSaveData" Type="Int32" />
+          <NavigationProperty Name="SaveData" Relationship="MMORPGBDModel.FK__Inventory__IdSav__01142BA1" FromRole="Inventory" ToRole="SaveData" />
+        </EntityType>
         <EntityType Name="Player">
           <Key>
             <PropertyRef Name="Id" />
@@ -89,17 +98,17 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="HP" Nullable="false" Type="Int32" />
-          <Property Name="ATK" Nullable="false" Type="Int32" />
-          <Property Name="DEF" Nullable="false" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HP" Type="Int32" Nullable="false" />
+          <Property Name="ATK" Type="Int32" Nullable="false" />
+          <Property Name="DEF" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Player" Relationship="Self.FK__Player__IdSaveDa__52593CB8" FromRole="SaveData" ToRole="Player" />
           <NavigationProperty Name="Inventory" Relationship="MMORPGBDModel.FK__Inventory__IdSav__01142BA1" FromRole="SaveData" ToRole="Inventory" />
         </EntityType>
         <Association Name="FK__Player__IdSaveDa__52593CB8">
-          <End Type="Self.SaveData" Multiplicity="0..1" Role="SaveData" />
-          <End Type="Self.Player" Multiplicity="*" Role="Player" />
+          <End Role="SaveData" Type="Self.SaveData" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SaveData">
               <PropertyRef Name="Id" />
@@ -109,33 +118,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MMORPGBDEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ProgectMMO" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" />
           <EntitySet Name="Player" EntityType="Self.Player" />
           <EntitySet Name="SaveData" EntityType="Self.SaveData" />
           <AssociationSet Name="FK__Player__IdSaveDa__52593CB8" Association="Self.FK__Player__IdSaveDa__52593CB8">
-            <End EntitySet="SaveData" Role="SaveData" />
-            <End EntitySet="Player" Role="Player" />
+            <End Role="SaveData" EntitySet="SaveData" />
+            <End Role="Player" EntitySet="Player" />
           </AssociationSet>
-          <EntitySet Name="Inventory" EntityType="MMORPGBDModel.Inventory" />
           <AssociationSet Name="FK__Inventory__IdSav__01142BA1" Association="MMORPGBDModel.FK__Inventory__IdSav__01142BA1">
-            <End EntitySet="SaveData" Role="SaveData" />
-            <End EntitySet="Inventory" Role="Inventory" />
+            <End Role="SaveData" EntitySet="SaveData" />
+            <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Inventory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Stat" Type="Int32" Nullable="false" />
-          <Property Name="IdSaveData" Type="Int32" />
-          <NavigationProperty Name="SaveData" Relationship="MMORPGBDModel.FK__Inventory__IdSav__01142BA1" FromRole="Inventory" ToRole="SaveData" />
-          <Property Name="IsArmor" Type="Boolean" />
-        </EntityType>
         <Association Name="FK__Inventory__IdSav__01142BA1">
-          <End Type="MMORPGBDModel.SaveData" Multiplicity="0..1" Role="SaveData" />
-          <End Type="MMORPGBDModel.Inventory" Multiplicity="*" Role="Inventory" />
+          <End Type="MMORPGBDModel.SaveData" Role="SaveData" Multiplicity="0..1" />
+          <End Type="MMORPGBDModel.Inventory" Role="Inventory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SaveData">
               <PropertyRef Name="Id" />
@@ -150,7 +148,17 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище MMORPGBDModelContainer" CdmEntityContainer="MMORPGBDEntities3">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MMORPGBDModelContainer" CdmEntityContainer="ProgectMMO">
+          <EntitySetMapping Name="Inventory">
+            <EntityTypeMapping TypeName="MMORPGBDModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="IdSaveData" ColumnName="IdSaveData" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Stat" ColumnName="Stat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Player">
             <EntityTypeMapping TypeName="MMORPGBDModel.Player">
               <MappingFragment StoreEntitySet="Player">
@@ -169,17 +177,6 @@
                 <ScalarProperty Name="HP" ColumnName="HP" />
                 <ScalarProperty Name="ATK" ColumnName="ATK" />
                 <ScalarProperty Name="DEF" ColumnName="DEF" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Inventory">
-            <EntityTypeMapping TypeName="MMORPGBDModel.Inventory">
-              <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="IsArmor" ColumnName="IsArmor" />
-                <ScalarProperty Name="IdSaveData" ColumnName="IdSaveData" />
-                <ScalarProperty Name="Stat" ColumnName="Stat" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

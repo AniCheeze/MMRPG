@@ -14,7 +14,9 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml.Linq;
 using MainClasses;
+using WpfApp1;
 
 
 namespace WpfApp11
@@ -24,12 +26,12 @@ namespace WpfApp11
     /// </summary>
     public partial class Window1 : Window
     {
-        Player MainPlayer;
+        public string NameGG {  get; set; }
+        Players MainPlayer;
         Enemy MainEnemy;
         public Window1()
         {
             InitializeComponent();
-
         }
 
         public void Travel()
@@ -132,8 +134,14 @@ namespace WpfApp11
             Travel();
             IMGPM.Source = (ImageSource)FindResource("SWMP");
         }
+        public void InventoryClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(NameGG);
+            Window2 window2 = new Window2(NameGG);
+            window2.Show();
+        }
 
-        public void Battle(Enemy A, Player B)
+        public void Battle(Enemy A, Players B)
         {
             MenuNSTG.IsEnabled = false;
             DispatcherTimer PlayerASPD = new DispatcherTimer();

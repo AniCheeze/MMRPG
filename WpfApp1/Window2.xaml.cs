@@ -10,60 +10,71 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp11;
 
-namespace WpfApp2
+namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Window2.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Window2 : Window
     {
-        public MainWindow()
+        public string NameGG { get; set; }
+        public Window2(string Namegg)
         {
+            this.NameGG = Namegg;
             InitializeComponent();
-            using (ProgectMMO db = new ProgectMMO())
+            ItemsPrint();
+        }
+
+        public void ItemsPrint()
+        {
+            MessageBox.Show(NameGG);
+            using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
             {
                 Player player = new Player();
                 foreach (var players in db.Player)
                 {
-                    if (players.Login == "Username")
+                    if (players.Login == NameGG)
                     {
                         player.IdSaveData = players.IdSaveData;
                     }
                 }
-                foreach(var items in db.Inventory)
+                foreach (var items in db.Inventory)
                 {
-                    if (items.IdSaveData == player.IdSaveData)
+                    if (items.IdSaveData == player.IdSaveData && items.IsArmor == false)
                     {
                         listbox1.Items.Add(items.Name);
+                    }
+                    else if (items.IdSaveData == player.IdSaveData && items.IsArmor == true)
+                    {
+                        listbox2.Items.Add(items.Name);
                     }
                 }
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            Window Window = new MainWindow();
             if (listbox1.SelectedItem != null)
             {
                 MessageBox.Show("1");
             }
-            else if(listbox2.SelectedItem != null)
+            else if (listbox2.SelectedItem != null)
             {
                 MessageBox.Show("2");
             }
             else
             {
-                MessageBox.Show("Вы не выбрали ничего","Ошибка",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Вы не выбрали ничего", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            mainWindow.Close();
+            Close();
         }
+
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Close();
+            Close();
         }
     }
 }

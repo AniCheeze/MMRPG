@@ -14,7 +14,7 @@ namespace MainClasses
         int DEF {  get; set; }
         int SPD { get; set; }
     }
-    public interface Player
+    public interface Players
     {
         string Name { get; set; }
         int HP { get; set; }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfApp1
+namespace WpfApp2
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +18,6 @@ namespace WpfApp1
         public string Name { get; set; }
         public int Stat { get; set; }
         public Nullable<int> IdSaveData { get; set; }
-        public Nullable<bool> IsArmor { get; set; }
     
         public virtual SaveData SaveData { get; set; }
     }

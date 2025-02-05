@@ -31,7 +31,7 @@ namespace WpfApp1
             Background = gradientBrush;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
             {
@@ -41,6 +41,8 @@ namespace WpfApp1
                 {
                     MessageBox.Show("Вход на сервер ", "Успех", MessageBoxButton.OK, MessageBoxImage.None);
                     Window1 window1 = new Window1();
+                    window1.NameGG = UserName.Text;
+                    Close();
                     window1.Show();
                     
                 }
@@ -74,8 +76,6 @@ namespace WpfApp1
                     db.Player.Add(player);
                     db.SaveChanges();
                     MessageBox.Show("Вы успешно зарегистрировались", "Гойда!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Window1 window1 = new Window1();
-                    window1.Show();
                 }
                 else
                 {

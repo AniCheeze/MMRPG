@@ -14,7 +14,7 @@
         <BitmapImage x:Key="TWNN" UriSource="Town.jpg"/>
     </Window.Resources>
     <Grid>
-        <Image x:Name="IMGPM" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="400" Margin="22,96,0,0" Stretch="Fill"/>
+        <Image x:Name="IMGPM" HorizontalAlignment="Left" Height="11" VerticalAlignment="Top" Width="17" Margin="782,427,0,0" Stretch="Fill"/>
         <Menu x:Name="MenuNSTG" Height="25" VerticalAlignment="Top" FontSize="16" Opacity="0.85">
             <MenuItem Header="Locations">
                 <MenuItem Header="Forest" Click="FClickTV" />
@@ -29,7 +29,7 @@
                 <Separator />
             </MenuItem>
             <MenuItem Header="Equipment" >
-                <MenuItem Header="Inventory" />
+                <MenuItem Header="Inventory" Click="InventoryClick"/>
                 <MenuItem Header="Sets" />
             </MenuItem>
             <MenuItem Header="Settings" />
