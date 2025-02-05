@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MainClasses
 {
@@ -12,6 +14,8 @@ namespace MainClasses
         public int HP { get; set; }
         public int ATK { get; set; }
         public int DEF {  get; set; }
+        public int SPD { get; set; }
+
         Enemy(string name, int hP, int aTK, int dEF, int sPD)
         {
             Name = name;
@@ -26,8 +30,8 @@ namespace MainClasses
         public int HP { get; set; }
         public int ATK { get; set; }
         public int DEF { get; set; }
-        Dictionary<string,double> keyValuePairs { get; set; }
-        Players(string name, int hP, int aTK, int dEF, int sPD)
+        public int SPD { get; set; }
+        public Players(string name, int hP, int aTK, int dEF, int sPD)
         {
             Name = name;
             HP = hP;

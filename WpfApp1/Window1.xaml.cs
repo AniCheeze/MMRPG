@@ -35,17 +35,17 @@ namespace WpfApp11
         {
             using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
             {
-                SaveData saveData = ((SaveData)(from savedata in db.SaveData where savedata.Name == NameGG select savedata));
-                MainPlayer.Name = saveData.Name;
-                MainPlayer.ATK = saveData.ATK;
-                MainPlayer.DEF = saveData.DEF;
-                MainPlayer.HP = saveData.HP;
+                foreach(var saveData in db.SaveData) 
+                {
+                    MainPlayer = new Players(saveData.Name, saveData.HP, saveData.ATK, saveData.DEF, 5);
+                }
 
             }
         }
         public Window1()
         {
             InitializeComponent();
+            LOADER();
         }
 
         public void Travel()
@@ -150,9 +150,10 @@ namespace WpfApp11
         }
         public void InventoryClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(NameGG);
-            Window2 window2 = new Window2(NameGG);
+            Window2 window2 = new Window2(NameGG,MainPlayer);  
             window2.Show();
+            MainPlayer = window2.GetPalyer();
+
         }
 
         public void Battle(Enemy A, Players B)

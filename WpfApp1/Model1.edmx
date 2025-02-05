@@ -35,7 +35,7 @@
           <Property Name="ATK" Type="int" Nullable="false" />
           <Property Name="DEF" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Inventory__IdSav__01142BA1">
+        <Association Name="FK__Inventory__IdSav__18EBB532">
           <End Role="SaveData" Type="Self.SaveData" Multiplicity="0..1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -63,7 +63,7 @@
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaveData" EntityType="Self.SaveData" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Inventory__IdSav__01142BA1" Association="Self.FK__Inventory__IdSav__01142BA1">
+          <AssociationSet Name="FK__Inventory__IdSav__18EBB532" Association="Self.FK__Inventory__IdSav__18EBB532">
             <End Role="SaveData" EntitySet="SaveData" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
