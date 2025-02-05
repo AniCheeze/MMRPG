@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="MMORPGBDModel.SaveData" PointX="0.875" PointY="1.75" Width="1.5" IsExpanded="true" />
         <AssociationConnector ManuallyRouted="false" Association="MMORPGBDModel.FK__Player__IdSaveDa__52593CB8" />
         <EntityTypeShape EntityType="MMORPGBDModel.Inventory" Width="1.5" PointX="0.75" PointY="5.25" />
-        <AssociationConnector Association="MMORPGBDModel.FK__Inventory__IdSav__01142BA1" />
+        <AssociationConnector Association="MMORPGBDModel.FK__Inventory__IdSav__4D94879B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

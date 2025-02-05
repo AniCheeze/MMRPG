@@ -14,6 +14,7 @@
           <Property Name="Stat" Type="int" Nullable="false" />
           <Property Name="IdSaveData" Type="int" />
           <Property Name="IsArmor" Type="bit" />
+          <Property Name="Type" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -34,7 +35,7 @@
           <Property Name="ATK" Type="int" Nullable="false" />
           <Property Name="DEF" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Inventory__IdSav__01142BA1">
+        <Association Name="FK__Inventory__IdSav__4D94879B">
           <End Role="SaveData" Type="Self.SaveData" Multiplicity="0..1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -46,7 +47,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Player__IdSaveDa__52593CB8">
+        <Association Name="FK__Player__IdSaveDa__4E88ABD4">
           <End Role="SaveData" Type="Self.SaveData" Multiplicity="0..1" />
           <End Role="Player" Type="Self.Player" Multiplicity="*" />
           <ReferentialConstraint>
@@ -62,11 +63,11 @@
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaveData" EntityType="Self.SaveData" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Inventory__IdSav__01142BA1" Association="Self.FK__Inventory__IdSav__01142BA1">
+          <AssociationSet Name="FK__Inventory__IdSav__4D94879B" Association="Self.FK__Inventory__IdSav__4D94879B">
             <End Role="SaveData" EntitySet="SaveData" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
-          <AssociationSet Name="FK__Player__IdSaveDa__52593CB8" Association="Self.FK__Player__IdSaveDa__52593CB8">
+          <AssociationSet Name="FK__Player__IdSaveDa__4E88ABD4" Association="Self.FK__Player__IdSaveDa__4E88ABD4">
             <End Role="SaveData" EntitySet="SaveData" />
             <End Role="Player" EntitySet="Player" />
           </AssociationSet>
@@ -95,7 +96,7 @@
           <Property Name="ATK" Nullable="false" Type="Int32" />
           <Property Name="DEF" Nullable="false" Type="Int32" />
           <NavigationProperty Name="Player" Relationship="Self.FK__Player__IdSaveDa__52593CB8" FromRole="SaveData" ToRole="Player" />
-          <NavigationProperty Name="Inventory" Relationship="MMORPGBDModel.FK__Inventory__IdSav__01142BA1" FromRole="SaveData" ToRole="Inventory" />
+          <NavigationProperty Name="Inventory" Relationship="MMORPGBDModel.FK__Inventory__IdSav__4D94879B" FromRole="SaveData" ToRole="Inventory" />
         </EntityType>
         <Association Name="FK__Player__IdSaveDa__52593CB8">
           <End Type="Self.SaveData" Multiplicity="0..1" Role="SaveData" />
@@ -117,9 +118,9 @@
             <End EntitySet="Player" Role="Player" />
           </AssociationSet>
           <EntitySet Name="Inventory" EntityType="MMORPGBDModel.Inventory" />
-          <AssociationSet Name="FK__Inventory__IdSav__01142BA1" Association="MMORPGBDModel.FK__Inventory__IdSav__01142BA1">
-            <End EntitySet="SaveData" Role="SaveData" />
-            <End EntitySet="Inventory" Role="Inventory" />
+          <AssociationSet Name="FK__Inventory__IdSav__4D94879B" Association="MMORPGBDModel.FK__Inventory__IdSav__4D94879B">
+            <End Role="SaveData" EntitySet="SaveData" />
+            <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Inventory">
@@ -130,18 +131,19 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Stat" Type="Int32" Nullable="false" />
           <Property Name="IdSaveData" Type="Int32" />
-          <NavigationProperty Name="SaveData" Relationship="MMORPGBDModel.FK__Inventory__IdSav__01142BA1" FromRole="Inventory" ToRole="SaveData" />
           <Property Name="IsArmor" Type="Boolean" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SaveData" Relationship="MMORPGBDModel.FK__Inventory__IdSav__4D94879B" FromRole="Inventory" ToRole="SaveData" />
         </EntityType>
-        <Association Name="FK__Inventory__IdSav__01142BA1">
-          <End Type="MMORPGBDModel.SaveData" Multiplicity="0..1" Role="SaveData" />
-          <End Type="MMORPGBDModel.Inventory" Multiplicity="*" Role="Inventory" />
+        <Association Name="FK__Inventory__IdSav__4D94879B">
+          <End Type="MMORPGBDModel.SaveData" Role="SaveData" Multiplicity="0..1" />
+          <End Type="MMORPGBDModel.Inventory" Role="Inventory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SaveData">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Inventory">
-              <PropertyRef Name="IdSaveData" />
+              <PropertyRef Name="IdSaveData1" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -175,8 +177,7 @@
           <EntitySetMapping Name="Inventory">
             <EntityTypeMapping TypeName="MMORPGBDModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="IsArmor" ColumnName="IsArmor" />
-                <ScalarProperty Name="IdSaveData" ColumnName="IdSaveData" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Stat" ColumnName="Stat" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
