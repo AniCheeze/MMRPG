@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5d52bd53260947d28abe85c02fbec943" Name="Diagram1">
-        <EntityTypeShape EntityType="MMORPGBDModel.Player" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MMORPGBDModel.SaveData" PointX="0.875" PointY="1.75" Width="1.5" IsExpanded="true" />
-        <AssociationConnector ManuallyRouted="false" Association="MMORPGBDModel.FK__Player__IdSaveDa__52593CB8" />
-        <EntityTypeShape EntityType="MMORPGBDModel.Inventory" Width="1.5" PointX="0.75" PointY="5.25" />
-        <AssociationConnector Association="MMORPGBDModel.FK__Inventory__IdSav__4D94879B" />
+      <Diagram DiagramId="c9c75e97149541179fc9025f7ba0d772" Name="Diagram1">
+        <EntityTypeShape EntityType="MMORPGDBModel.Inventory" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MMORPGDBModel.Player" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MMORPGDBModel.SaveData" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="MMORPGDBModel.FK__Inventory__IdSav__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="MMORPGDBModel.FK__Player__IdSaveDa__4E88ABD4" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

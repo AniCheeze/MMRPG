@@ -6,15 +6,23 @@ using System.Threading.Tasks;
 
 namespace MainClasses
 {
-    public interface Enemy
+    public class Enemy
     {
         string Name { get; set; }
         int HP { get; set; }
         int ATK { get; set; }
         int DEF {  get; set; }
         int SPD { get; set; }
+        Enemy(string name, int hP, int aTK, int dEF, int sPD)
+        {
+            Name = name;
+            HP = hP;
+            ATK = aTK;
+            DEF = dEF;
+            SPD = sPD;
+        }
     }
-    public interface Players
+    public class Players
     {
         string Name { get; set; }
         int HP { get; set; }
@@ -22,7 +30,14 @@ namespace MainClasses
         int DEF { get; set; }
         int SPD { get; set; }
         Dictionary<string,double> keyValuePairs { get; set; }
-
+        Players(string name, int hP, int aTK, int dEF, int sPD)
+        {
+            Name = name;
+            HP = hP;
+            ATK = aTK;
+            DEF = dEF;
+            SPD = sPD;
+        }
     }
     public interface Items
     {
