@@ -63,7 +63,7 @@ namespace WpfApp1
             }
             else if (listbox2.SelectedItem != null)
             {
-                MessageBox.Show("2");
+                
             }
             else
             {

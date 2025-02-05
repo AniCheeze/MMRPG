@@ -12,14 +12,12 @@ namespace MainClasses
         public int HP { get; set; }
         public int ATK { get; set; }
         public int DEF {  get; set; }
-        public int SPD { get; set; }
         Enemy(string name, int hP, int aTK, int dEF, int sPD)
         {
             Name = name;
             HP = hP;
             ATK = aTK;
             DEF = dEF;
-            SPD = sPD;
         }
     }
     public class Players
@@ -28,7 +26,6 @@ namespace MainClasses
         public int HP { get; set; }
         public int ATK { get; set; }
         public int DEF { get; set; }
-        public int SPD { get; set; }
         Dictionary<string,double> keyValuePairs { get; set; }
         Players(string name, int hP, int aTK, int dEF, int sPD)
         {
@@ -36,7 +33,6 @@ namespace MainClasses
             HP = hP;
             ATK = aTK;
             DEF = dEF;
-            SPD = sPD;
         }
     }
     public interface Items

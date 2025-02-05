@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище MMORPGDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище MMORPGDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Inventory">
           <Key>
             <PropertyRef Name="Id" />
@@ -35,7 +35,7 @@
           <Property Name="ATK" Type="int" Nullable="false" />
           <Property Name="DEF" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Inventory__IdSav__4D94879B">
+        <Association Name="FK__Inventory__IdSav__01142BA1">
           <End Role="SaveData" Type="Self.SaveData" Multiplicity="0..1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -47,7 +47,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Player__IdSaveDa__4E88ABD4">
+        <Association Name="FK__Player__IdSaveDa__52593CB8">
           <End Role="SaveData" Type="Self.SaveData" Multiplicity="0..1" />
           <End Role="Player" Type="Self.Player" Multiplicity="*" />
           <ReferentialConstraint>
@@ -63,17 +63,16 @@
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaveData" EntityType="Self.SaveData" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Inventory__IdSav__4D94879B" Association="Self.FK__Inventory__IdSav__4D94879B">
+          <AssociationSet Name="FK__Inventory__IdSav__01142BA1" Association="Self.FK__Inventory__IdSav__01142BA1">
             <End Role="SaveData" EntitySet="SaveData" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
-          <AssociationSet Name="FK__Player__IdSaveDa__4E88ABD4" Association="Self.FK__Player__IdSaveDa__4E88ABD4">
+          <AssociationSet Name="FK__Player__IdSaveDa__52593CB8" Association="Self.FK__Player__IdSaveDa__52593CB8">
             <End Role="SaveData" EntitySet="SaveData" />
             <End Role="Player" EntitySet="Player" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MMORPGDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
