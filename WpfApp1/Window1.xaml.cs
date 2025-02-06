@@ -35,14 +35,12 @@ namespace WpfApp11
         {
             using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
             {
-                foreach(var saveData in db.SaveData) 
-                {
-                    if (saveData.Name == NameGG)
-                    {
-                        MainPlayer = new Players(saveData.Name, saveData.HP, saveData.ATK, saveData.DEF, 5);
-                    }
-                }
-
+                SaveData saveData = ((SaveData)(from savedata in db.SaveData where savedata.Name == NameGG select savedata));
+                MainPlayer.Name = saveData.Name;
+                MainPlayer.ATK = saveData.ATK;
+                MainPlayer.DEF = saveData.DEF;
+                MainPlayer.HP = saveData.HP;
+                MainPlayer.SPD = 5;
             }
         }
         public Window1(string namegg)
