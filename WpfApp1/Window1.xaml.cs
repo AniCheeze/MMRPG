@@ -40,7 +40,7 @@ namespace WpfApp11
                 MainPlayer.ATK = saveData.ATK;
                 MainPlayer.DEF = saveData.DEF;
                 MainPlayer.HP = saveData.HP;
-                MainPlayer.SPD = 5;
+
             }
         }
         public Window1(string namegg)
