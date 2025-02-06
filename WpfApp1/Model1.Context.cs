@@ -26,7 +26,9 @@ namespace WpfApp1
         }
     
         public virtual DbSet<Inventory> Inventory { get; set; }
+        public virtual DbSet<Items> Items { get; set; }
         public virtual DbSet<Player> Player { get; set; }
+        public virtual DbSet<Potion> Potion { get; set; }
         public virtual DbSet<SaveData> SaveData { get; set; }
     }
 }

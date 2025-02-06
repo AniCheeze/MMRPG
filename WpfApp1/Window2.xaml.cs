@@ -50,16 +50,24 @@ namespace WpfApp1
                         IdDataSave = Convert.ToInt32(players.IdSaveData);
                     }
                 }
-                foreach (var items in db.Inventory)
+                foreach (var invent in db.Inventory)
                 {
-                    if (items.IdSaveData == player.IdSaveData && items.IsArmor == false)
+                    if (invent.IdSaveData == player.IdSaveData)
                     {
-                        listbox1.Items.Add(items.Name);
-                    }
-                    else if (items.IdSaveData == player.IdSaveData && items.IsArmor == true)
-                    {
-                        listbox2.Items.Add(items.Name);
-
+                        foreach (var potion in db.Potion)
+                        {
+                            if (invent.IdItems == potion.Id)
+                            {
+                                listbox1.Items.Add(potion.Name);
+                            }
+                        }
+                        foreach (var items in db.Items)
+                        {
+                            if (invent.IdItems == items.Id)
+                            {
+                                listbox2.Items.Add(items.Name);
+                            }
+                        }
                     }
                 }
             }
@@ -71,94 +79,133 @@ namespace WpfApp1
                 Window Window = new MainWindow();
                 if (listbox1.SelectedItem != null)
                 {
-                    Inventory it=new Inventory();
-                    foreach (Inventory items in db.Inventory)
+                    Potion potion1 = new Potion();
+                    foreach (var invent in db.Inventory)
                     {
-                        if (items.Name == listbox1.SelectedItem.ToString()&&items.IdSaveData == IdDataSave)
+                        if (invent.IdSaveData == IdDataSave)
                         {
-                            it = items;
-                            foreach (var sd in db.SaveData)
+                            foreach (var potion in db.Potion)
                             {
-                                if(sd.Id == IdDataSave)
+                                if (potion.Id == invent.IdPotion)
                                 {
-                                    switch (items.Type.ToString())
+                                    potion1 = potion;
+                                    foreach (var sd in db.SaveData)
                                     {
-                                        case "HP":
+                                        if (sd.Id == IdDataSave)
+                                        {
+                                            switch (potion.Type.ToString())
                                             {
-                                                players.HP += items.Stat;
-                                                break;
+                                                case "HP":
+                                                    {
+                                                        players.HP += potion.Stat;
+                                                        break;
+                                                    }
+                                                case "ATK":
+                                                    {
+                                                        players.ATK += potion.Stat;
+                                                        break;
+                                                    }
+                                                case "DEF":
+                                                    {
+                                                        players.DEF += potion.Stat;
+                                                        break;
+                                                    }
                                             }
-                                        case "ATK":
-                                            {
-                                                players.ATK += items.Stat;
-                                                break;
-                                            }
-                                        case "DEF":
-                                            {
-                                                players.DEF += items.Stat;
-                                                break;
-                                            }
+                                            listbox1.Items.Remove(potion.Name);
+                                            break;
+                                        }
                                     }
-                                    listbox1.Items.Remove(items.Name);
                                     break;
                                 }
+                               
                             }
-                            break;                            
+                            break;
                         }
                     }
-                    db.Inventory.Remove(it);
+                    db.Potion.Remove(potion1);
                     db.SaveChanges();
                     Close();
                 }
 
                 else if (listbox2.SelectedItem != null)
                 {
-                    foreach (var items in db.Inventory)
+                    foreach (var invent in db.Inventory)
                     {
-                        if (items.Name == listbox2.SelectedItem.ToString() && items.IdSaveData == IdDataSave)
+                        if (invent.IdSaveData == IdDataSave)
                         {
-                            Inventory it = items;
-                            if (items.IsPutOn == false)
+                            foreach (var item in db.Items)
                             {
-                                foreach (var sd in db.SaveData)
+                                if (item.IsPutOn == false && item.Name == listbox2.SelectedItem.ToString())
                                 {
-                                    if (sd.Id == IdDataSave)
+                                    foreach (var sd in db.SaveData)
                                     {
-                                        MessageBox.Show(players.HP.ToString());
-                                        switch (items.Type.ToString())
+                                        if (sd.Id == IdDataSave)
                                         {
-                                            case "HP":
-                                                {
-                                                    players.HP += items.Stat;
-                                                    items.IsPutOn = true;
-                                                    break;
-                                                }
-                                            case "ATK":
-                                                {
-                                                    players.ATK += items.Stat;
-                                                    items.IsPutOn = true;
-                                                    break;
-                                                }
-                                            case "DEF":
-                                                {
-                                                    players.DEF += items.Stat;
-                                                    items.IsPutOn = true;
-                                                    break;
-                                                }
+                                            switch (item.Type.ToString())
+                                            {
+                                                case "HP":
+                                                    {
+                                                        players.HP += item.Stat;
+                                                        item.IsPutOn = true;
+                                                        break;
+                                                    }
+                                                case "ATK":
+                                                    {
+                                                        players.ATK += item.Stat;
+                                                        item.IsPutOn = true;
+                                                        break;
+                                                    }
+                                                case "DEF":
+                                                    {
+                                                        players.DEF += item.Stat;
+                                                        item.IsPutOn = true;
+                                                        break;
+                                                    }
+                                            }
+                                            break;
                                         }
-                                        break;
                                     }
+                                    item.IsPutOn = true;
+                                    MessageBox.Show($"Вас надели {item.Name}", "z", MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
-                                it.IsPutOn = true;                             
-                                MessageBox.Show($"Вас надели {items.Name}", "z", MessageBoxButton.OK, MessageBoxImage.Information);
-                            }
-                            else
-                            {
-                                var res = MessageBox.Show("Вы хотите это снять?", "ZOV", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                                if(res == MessageBoxResult.Yes)
+                                else if(item.IsPutOn == true && item.Name == listbox2.SelectedItem.ToString())
                                 {
-                                    it.IsPutOn = false;
-                                    MessageBox.Show("Вас понял", "z", MessageBoxButton.OK,MessageBoxImage.Information);
+                                    var res = MessageBox.Show("Вы хотите это снять?", "ZOV", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                                    if (res == MessageBoxResult.Yes)
+                                    {
+
+                                        item.IsPutOn = false;
+                                        foreach (var sd in db.SaveData)
+                                        {
+                                            if (sd.Id == IdDataSave)
+                                            {
+                                                switch (item.Type.ToString())
+                                                {
+                                                    case "HP":
+                                                        {
+                                                            players.HP -= item.Stat;
+                                                            item.IsPutOn = true;
+                                                            break;
+                                                        }
+                                                    case "ATK":
+                                                        {
+                                                            players.ATK -= item.Stat;
+                                                            item.IsPutOn = true;
+                                                            break;
+                                                        }
+                                                    case "DEF":
+                                                        {
+                                                            players.DEF -= item.Stat;
+                                                            item.IsPutOn = true;
+                                                            break;
+                                                        }
+                                                }
+                                                break;
+                                            }
+                                        }
+                                        item.IsPutOn = false;
+                                        MessageBox.Show("Вас понял", "z", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    }
                                 }
                             }
                             break;

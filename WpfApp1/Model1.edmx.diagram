@@ -4,12 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c9c75e97149541179fc9025f7ba0d772" Name="Diagram1">
-        <EntityTypeShape EntityType="MMORPGDBModel.Inventory" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MMORPGDBModel.Player" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MMORPGDBModel.SaveData" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <AssociationConnector Association="MMORPGDBModel.FK__Inventory__IdSav__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="MMORPGDBModel.FK__Player__IdSaveDa__4E88ABD4" ManuallyRouted="false" />
+      <Diagram DiagramId="356e871ff6fa478a8258c5aac0d4c41a" Name="Diagram1">
+        <EntityTypeShape EntityType="MMORPGBDModel.Inventory" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MMORPGBDModel.Items" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MMORPGBDModel.Player" Width="1.5" PointX="0.625" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MMORPGBDModel.Potion" Width="1.5" PointX="5.375" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MMORPGBDModel.SaveData" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="MMORPGBDModel.FK__Inventory__IdIte__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="MMORPGBDModel.FK__Inventory__IdPot__2DE6D218" ManuallyRouted="false" />
+        <AssociationConnector Association="MMORPGBDModel.FK__Inventory__IdSav__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="MMORPGBDModel.FK__Player__IdSaveDa__52593CB8" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
