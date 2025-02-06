@@ -142,6 +142,7 @@ namespace WpfApp1
                 EnemyASPD.Stop();
                 MessageBox.Show("Mob Won");
                 battleOver = true;
+                Close();
             }
             else
             {
@@ -149,6 +150,7 @@ namespace WpfApp1
                 EnemyASPD.Stop();
                 MessageBox.Show("Player Won");
                 battleOver = true;
+                Close();
             }
         }
         public void EATK(object sender, EventArgs e)
@@ -165,6 +167,7 @@ namespace WpfApp1
                 EnemyASPD.Stop();
                 MessageBox.Show("Mob Won");
                 battleOver = true;
+                Close();
             }
             else
             {
@@ -172,6 +175,7 @@ namespace WpfApp1
                 EnemyASPD.Stop();
                 MessageBox.Show("Player Won");
                 battleOver = true;
+                Close();
             }
         }
     }
