@@ -60,6 +60,8 @@ namespace WpfApp11
         {
             NameGG = namegg;
             InitializeComponent();
+            timeL.Tick += TimerTickFail;
+            timerV.Tick += TimerTickSuccess;
             LOADER();
         }
 
@@ -91,8 +93,6 @@ namespace WpfApp11
                     }
                 ));
             backgroundThread.Start();
-            timeL.Tick += TimerTickFail;
-            timerV.Tick += TimerTickSuccess;
             timeL.Interval = TimeSpan.FromSeconds(TT1);
             timerV.Interval = TimeSpan.FromSeconds(TT2);
             timeL.Start();
