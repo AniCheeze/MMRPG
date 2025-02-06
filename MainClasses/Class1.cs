@@ -16,13 +16,14 @@ namespace MainClasses
         public int DEF {  get; set; }
         public int SPD { get; set; }
 
-        Enemy(string name, int hP, int aTK, int dEF, int sPD)
+        public Enemy(string name, int hP, int aTK, int dEF, int sPD)
         {
             Name = name;
             HP = hP;
             ATK = aTK;
             DEF = dEF;
         }
+        public Enemy() { }
     }
     public class Players
     {
@@ -38,6 +39,7 @@ namespace MainClasses
             ATK = aTK;
             DEF = dEF;
         }
+        public Players() { }
     }
     public interface Items
     {

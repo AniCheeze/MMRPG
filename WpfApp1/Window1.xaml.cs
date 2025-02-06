@@ -26,21 +26,34 @@ namespace WpfApp11
     /// </summary>
     /// 
     public partial class Window1 : Window
-    {
-        public string NameGG {  get; set; }
+    { 
 
-        Players MainPlayer;
-        Enemy MainEnemy;
+        SynchronizationContext ctx = SynchronizationContext.Current ?? new SynchronizationContext();
+        int PSD;
+        int ESD;
+        void RunOnGuiThread(Action action)
+        {
+            this.ctx.Post(o => action(), null);
+        }
+        public string NameGG { get; set; }
+        DispatcherTimer timeL = new DispatcherTimer();
+        DispatcherTimer timerV = new DispatcherTimer();
+        DispatcherTimer PlayerASPD = new DispatcherTimer();
+        DispatcherTimer EnemyASPD = new DispatcherTimer();
+        Players MainPlayer = new Players();
+        Enemy MainEnemy = new Enemy();
         public void LOADER()
         {
             using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
             {
-                SaveData saveData = ((SaveData)(from savedata in db.SaveData where savedata.Name == NameGG select savedata));
-                MainPlayer.Name = saveData.Name;
-                MainPlayer.ATK = saveData.ATK;
-                MainPlayer.DEF = saveData.DEF;
-                MainPlayer.HP = saveData.HP;
-
+                foreach (var saveData in db.SaveData)
+                {
+                    MainPlayer.Name = saveData.Name;
+                    MainPlayer.ATK = saveData.ATK;
+                    MainPlayer.DEF = saveData.DEF;
+                    MainPlayer.HP = saveData.HP;
+                    MainPlayer.SPD = 5;
+                }
             }
         }
         public Window1(string namegg)
@@ -52,31 +65,38 @@ namespace WpfApp11
 
         public void Travel()
         {
-            DispatcherTimer timeL = new DispatcherTimer();
-            DispatcherTimer timerV = new DispatcherTimer();
-            DispatcherTimer TTick = new DispatcherTimer();
-            timeL.Tick += TimerTickFail;
-            timerV.Tick += TimerTickSuccess;
+            int TT1;
+            int TT2;
             Random R1 = new Random();
             Random R2 = new Random();
-            int TT1 = R1.Next(3,10);
-            int TT2 = R2.Next(5,10);
+            TT1 = R1.Next(3, 10);
+            TT2 = R2.Next(5, 10);
+            if (TT1 == TT2)
+            {
+                TT1 = TT2 + 1;
+            }
+            SynchronizationContext context = SynchronizationContext.Current;
+
+            Thread backgroundThread = new Thread(
+                    new ThreadStart(() =>
+                    {
+                        for (int n = 0; n < TT2; n++)
+                        {
+                            Thread.Sleep(1000);
+                            context?.Post(new SendOrPostCallback((o) =>
+                            {
+                                PG1.Value = n;
+                            }), null);
+                        };
+                    }
+                ));
+            backgroundThread.Start();
+            timeL.Tick += TimerTickFail;
+            timerV.Tick += TimerTickSuccess;
             timeL.Interval = TimeSpan.FromSeconds(TT1);
             timerV.Interval = TimeSpan.FromSeconds(TT2);
-            TTick.Interval = TimeSpan.FromSeconds(0);
-            if (TT1 > TT2)
-            {
-                timeL.Start();
-            }
-            else if (TT2 > TT1)
-            {
-                timerV.Start();
-            }
-            else
-            {
-                timerV.Start();
-            }
-                TTick.Start();
+            timeL.Start();
+            timerV.Start();
             PG1.Maximum = TT2;
             PG1.Minimum = 0;
             PG1.Value = 0;
@@ -93,12 +113,19 @@ namespace WpfApp11
 
         private void TimerTickFail(object sender, EventArgs e)
         {
+            timerV.Stop();
+            timeL.Stop();
             MessageBox.Show("Battle");
-            Battle(MainEnemy, MainPlayer);
+
+            Window3 window3 = new Window3();
+            window3.Show();
         }
         private void TimerTickSuccess(object sender, EventArgs e)
         {
+            timerV.Stop();
+            timeL.Stop();
             MessageBox.Show("Success");
+
             PG1.Visibility = Visibility.Hidden;
         }
         private void TTTICK(object sender, EventArgs e)
