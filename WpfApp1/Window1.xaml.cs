@@ -186,6 +186,18 @@ namespace WpfApp11
         }
         private void ExitClick(object sender, RoutedEventArgs e)
         {
+            if (Exit.IsChecked == true)
+            {
+                SaveChanges();
+                Close();
+            }
+        }
+        private void SaveClick(object sender, RoutedEventArgs e)
+        {
+                SaveChanges();
+        }
+        private void SaveChanges()
+        {
             using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
             {
                 foreach (var saveData in db.SaveData)
@@ -200,7 +212,14 @@ namespace WpfApp11
                 }
                 db.SaveChanges();
             }
-            Close();
+        }
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            using(MMORPGBDEntities3 db = new MMORPGBDEntities3())
+            {
+                db.SaveChanges();
+            }
+            base.OnClosing(e);
         }
 
         public void Battle(Enemy A, Players B)
