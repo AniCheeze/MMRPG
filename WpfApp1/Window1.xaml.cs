@@ -37,13 +37,17 @@ namespace WpfApp11
             {
                 foreach(var saveData in db.SaveData) 
                 {
-                    MainPlayer = new Players(saveData.Name, saveData.HP, saveData.ATK, saveData.DEF, 5);
+                    if (saveData.Name == NameGG)
+                    {
+                        MainPlayer = new Players(saveData.Name, saveData.HP, saveData.ATK, saveData.DEF, 5);
+                    }
                 }
 
             }
         }
-        public Window1()
+        public Window1(string namegg)
         {
+            NameGG = namegg;
             InitializeComponent();
             LOADER();
         }
@@ -148,12 +152,30 @@ namespace WpfApp11
             Travel();
             IMGPM.Source = (ImageSource)FindResource("SWMP");
         }
-        public void InventoryClick(object sender, RoutedEventArgs e)
+        private void InventoryClick(object sender, RoutedEventArgs e)
         {
             Window2 window2 = new Window2(NameGG,MainPlayer);  
             window2.Show();
             MainPlayer = window2.GetPalyer();
 
+        }
+        private void ExitClick(object sender, RoutedEventArgs e)
+        {
+            using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
+            {
+                foreach (var saveData in db.SaveData)
+                {
+                    if (saveData.Name == NameGG)
+                    {
+                        saveData.HP = MainPlayer.HP;
+                        saveData.ATK = MainPlayer.ATK;
+                        saveData.DEF = MainPlayer.DEF;
+                        break;
+                    }
+                }
+                db.SaveChanges();
+            }
+            Close();
         }
 
         public void Battle(Enemy A, Players B)

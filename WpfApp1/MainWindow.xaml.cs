@@ -40,8 +40,7 @@ namespace WpfApp1
                 if (log != null && pas != null)
                 {
                     MessageBox.Show("Вход на сервер ", "Успех", MessageBoxButton.OK, MessageBoxImage.None);
-                    Window1 window1 = new Window1();
-                    window1.NameGG = UserName.Text;
+                    Window1 window1 = new Window1(UserName.Text);
                     Close();
                     window1.Show();
                     

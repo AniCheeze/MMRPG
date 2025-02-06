@@ -117,13 +117,14 @@ namespace WpfApp1
                     {
                         if (items.Name == listbox2.SelectedItem.ToString() && items.IdSaveData == IdDataSave)
                         {
-                            Inventory it=items;
+                            Inventory it = items;
                             if (items.IsPutOn == false)
                             {
                                 foreach (var sd in db.SaveData)
                                 {
                                     if (sd.Id == IdDataSave)
                                     {
+                                        MessageBox.Show(players.HP.ToString());
                                         switch (items.Type.ToString())
                                         {
                                             case "HP":
