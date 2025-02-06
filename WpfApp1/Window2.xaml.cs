@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp11;
 using MainClasses;
+using System.Diagnostics.Eventing.Reader;
 
 namespace WpfApp1
 {
@@ -71,7 +72,7 @@ namespace WpfApp1
                 if (listbox1.SelectedItem != null)
                 {
                     Inventory it=new Inventory();
-                    foreach (var items in db.Inventory)
+                    foreach (Inventory items in db.Inventory)
                     {
                         if (items.Name == listbox1.SelectedItem.ToString()&&items.IdSaveData == IdDataSave)
                         {
@@ -114,8 +115,55 @@ namespace WpfApp1
                 {
                     foreach (var items in db.Inventory)
                     {
-
+                        if (items.Name == listbox2.SelectedItem.ToString() && items.IdSaveData == IdDataSave)
+                        {
+                            Inventory it=items;
+                            if (items.IsPutOn == false)
+                            {
+                                foreach (var sd in db.SaveData)
+                                {
+                                    if (sd.Id == IdDataSave)
+                                    {
+                                        switch (items.Type.ToString())
+                                        {
+                                            case "HP":
+                                                {
+                                                    players.HP += items.Stat;
+                                                    items.IsPutOn = true;
+                                                    break;
+                                                }
+                                            case "ATK":
+                                                {
+                                                    players.ATK += items.Stat;
+                                                    items.IsPutOn = true;
+                                                    break;
+                                                }
+                                            case "DEF":
+                                                {
+                                                    players.DEF += items.Stat;
+                                                    items.IsPutOn = true;
+                                                    break;
+                                                }
+                                        }
+                                        break;
+                                    }
+                                }
+                                it.IsPutOn = true;                             
+                                MessageBox.Show($"Вас надели {items.Name}", "z", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            else
+                            {
+                                var res = MessageBox.Show("Вы хотите это снять?", "ZOV", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                                if(res == MessageBoxResult.Yes)
+                                {
+                                    it.IsPutOn = false;
+                                    MessageBox.Show("Вас понял", "z", MessageBoxButton.OK,MessageBoxImage.Information);
+                                }
+                            }
+                            break;
+                        }
                     }
+                    db.SaveChanges();
                 }
                 else
                 {

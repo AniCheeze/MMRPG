@@ -18,8 +18,9 @@ namespace WpfApp1
         public string Name { get; set; }
         public int Stat { get; set; }
         public Nullable<int> IdSaveData { get; set; }
-        public Nullable<bool> IsArmor { get; set; }
+        public bool IsArmor { get; set; }
         public string Type { get; set; }
+        public bool IsPutOn { get; set; }
     
         public virtual SaveData SaveData { get; set; }
     }

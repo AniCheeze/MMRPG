@@ -13,8 +13,9 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="Stat" Type="int" Nullable="false" />
           <Property Name="IdSaveData" Type="int" />
-          <Property Name="IsArmor" Type="bit" />
-          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="IsArmor" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsPutOn" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -84,9 +85,10 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Stat" Type="Int32" Nullable="false" />
           <Property Name="IdSaveData" Type="Int32" />
-          <Property Name="IsArmor" Type="Boolean" />
-          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsArmor" Type="Boolean" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SaveData" Relationship="Self.FK__Inventory__IdSav__4D94879B" FromRole="Inventory" ToRole="SaveData" />
+          <Property Name="IsPutOn" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -156,6 +158,7 @@
           <EntitySetMapping Name="Inventory">
             <EntityTypeMapping TypeName="MMORPGDBModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="IsPutOn" ColumnName="IsPutOn" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Stat" ColumnName="Stat" />
