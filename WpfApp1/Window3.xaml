@@ -30,10 +30,10 @@
             </ProgressBar.RenderTransform>
         </ProgressBar>
         <StackPanel Margin="10,217,615,55">
-            <Label x:Name="HPLB" Content="HP:" Margin="0,0,0,0" Width="35" HorizontalAlignment="Left"/>
-            <Label x:Name="ATKLB" Content="ATK:" Margin="0,0,0,0" Width="35" HorizontalAlignment="Left"/>
-            <Label x:Name="DEFLB" Content="DEF:" Margin="0,0,0,0" Width="35" HorizontalAlignment="Left"/>
-            <Label x:Name="SPDLB" Content="SPD:" Margin="0,0,0,0" Width="35" HorizontalAlignment="Left"/>
+            <Label x:Name="HPLB" Content="HP:" Margin="0,0,0,0" Width="170" HorizontalAlignment="Left"/>
+            <Label x:Name="ATKLB" Content="ATK:" Margin="0,0,0,0" Width="170" HorizontalAlignment="Left"/>
+            <Label x:Name="DEFLB" Content="DEF:" Margin="0,0,0,0" Width="170" HorizontalAlignment="Left"/>
+            <Label x:Name="SPDLB" Content="SPD:" Margin="0,0,0,0" Width="170" HorizontalAlignment="Left"/>
         </StackPanel>
         <Button Content="Equipment" HorizontalAlignment="Left" Margin="190,334,0,0" VerticalAlignment="Top" Height="45" Width="170" FontSize="20" Click="Button_Click"/>
         <ProgressBar x:Name="ENPGHP" Minimum="0" Maximum="100" HorizontalAlignment="Left" Height="30" Margin="545,172,0,0" VerticalAlignment="Top" Width="245" BorderBrush="Red">

@@ -22,6 +22,7 @@ namespace MainClasses
             HP = hP;
             ATK = aTK;
             DEF = dEF;
+            SPD = sPD;
         }
         public Enemy() { }
     }
@@ -38,6 +39,7 @@ namespace MainClasses
             HP = hP;
             ATK = aTK;
             DEF = dEF;
+            SPD = sPD;
         }
         public Players() { }
     }
