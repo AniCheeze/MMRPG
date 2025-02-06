@@ -186,15 +186,12 @@ namespace WpfApp11
         }
         private void ExitClick(object sender, RoutedEventArgs e)
         {
-            if (Exit.IsChecked == true)
-            {
-                SaveChanges();
-                Close();
-            }
+            SaveChanges();
+            Close();
         }
         private void SaveClick(object sender, RoutedEventArgs e)
         {
-                SaveChanges();
+            SaveChanges();
         }
         private void SaveChanges()
         {

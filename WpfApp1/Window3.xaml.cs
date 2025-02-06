@@ -24,13 +24,14 @@ namespace WpfApp1
     {
         bool battleOver;
         Enemy MainEnemy = new Enemy("A", 100, 10, 5, 5);
-        Players MainPlayer = new Players("A", 100, 10, 5, 5);
+        Players MainPlayer = new Players();
         DispatcherTimer PlayerASPD = new DispatcherTimer();
         DispatcherTimer EnemyASPD = new DispatcherTimer();
         SynchronizationContext context = SynchronizationContext.Current;
         public Window3()
         {
             InitializeComponent();
+            LOADER();
             ENPGHP.Value = MainEnemy.HP;
             HPLB.Content = $"HP:{MainPlayer.HP}";
             ATKLB.Content = $"ATK:{MainPlayer.ATK}";
@@ -38,7 +39,20 @@ namespace WpfApp1
             SPDLB.Content = $"SPD:{MainPlayer.SPD}";
             PGBARPRG(MainEnemy, MainPlayer);
         }
-
+        private void LOADER()
+        {
+            using (MMORPGBDEntities3 db = new MMORPGBDEntities3())
+            {
+                foreach (var saveData in db.SaveData)
+                {
+                    MainPlayer.Name = saveData.Name;
+                    MainPlayer.ATK = saveData.ATK;
+                    MainPlayer.DEF = saveData.DEF;
+                    MainPlayer.HP = saveData.HP;
+                    MainPlayer.SPD = 5;
+                }
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
